@@ -47,6 +47,7 @@ public class MulticastUDPChatConsola implements Runnable{
 
                 linea = scanner.nextLine();
             }
+            haTerminado = true;
 
             String lineaEnviar = nombreUsuario + " se ha desconectado del chat";
             byte[] m = lineaEnviar.getBytes();
@@ -54,7 +55,6 @@ public class MulticastUDPChatConsola implements Runnable{
             DatagramPacket mensaje = new DatagramPacket(m, m.length, grupo, puerto);
             socketMulticast.send(mensaje);
 
-            haTerminado = true;
             scanner.close();
             socketMulticast.close();
 
